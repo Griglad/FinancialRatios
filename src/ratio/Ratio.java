@@ -1,38 +1,28 @@
 package ratio;
 
-
-import java.text.DecimalFormat;
-
-
 public abstract class Ratio {
 
     protected double result;
-    protected String formated;
-    protected DecimalFormat df = new DecimalFormat("#.###;-#.###");
 
 
-    public String ratioCalculation(double amount1, double amount2) {
+    public double ratioCalculation(double amount1, double amount2) {
 
         result = (amount1 / amount2);
-        formated = df.format(result);
-        return formated;
+
+        return result;
     }
 
 
-    public String percentageRatioCalculation(double amount1, double amount2) {
+    public double percentageRatioCalculation(double amount1, double amount2) {
 
 
         result = (amount1 * 100 / amount2);
-        formated = df.format(result);
-        return formated;
+
+       return result;
 
     }
 
 
-    public String getFormated() {
-
-        return formated;
-    }
 
     public double getResult() {
         return result;

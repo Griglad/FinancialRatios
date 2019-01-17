@@ -39,12 +39,12 @@ public class Company {
 
         for (Ratio r : ratiosList) {
             if (r instanceof ReturnOnAssets || r instanceof ReturnOnEquity || r instanceof ReturnOnCapitalEmployed || r instanceof NetProfitMargin) {
-                System.out.println(name + " " + r.getClass().getSimpleName() + " is approximately " + r.getFormated() + "%");
+                System.out.println(name + " " + r.getClass().getSimpleName() + " is approximately " + Math.round(r.getResult()) + "%");
                 r.printEvaluationInfo(name);
                 System.out.println("---------------------------------------------------------------");
             } else {
 
-                System.out.println(name + " " + r.getClass().getSimpleName() + " Ratio" +  " is " + r.getFormated());
+                System.out.printf(name + " " + r.getClass().getSimpleName() + " Ratio is %.2f.",r.getResult());
                 r.printEvaluationInfo(name);
                 System.out.println("---------------------------------------------------------------");
             }

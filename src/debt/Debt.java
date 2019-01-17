@@ -14,7 +14,8 @@ public class Debt extends Ratio {
         double ratioToEvaluate = getResult();
 
 
-        System.out.printf("The company for every dollar/euro has in assets it has %.2f dollar/euro worth of liabilities\n",ratioToEvaluate);
+        System.out.printf(companyName + " for every dollar/euro has in assets it has %.2f dollar/euro worth of liabilities\n",ratioToEvaluate);
+
 
     }
 }

@@ -14,6 +14,6 @@ public class DetbtToEquity extends Ratio {
     public void printEvaluationInfo(String companyName) {
         double ratioToEvaluate = getResult();
 
-        System.out.printf(companyName +  " for every dollar/euro owned by the stakeholders owes %.2f to creditors\n",ratioToEvaluate);
+        System.out.printf("For every dollar/euro owned by the stakeholders " +companyName+ " owes %.2f to creditors\n",ratioToEvaluate);
     }
 }
