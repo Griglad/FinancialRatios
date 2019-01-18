@@ -23,7 +23,6 @@ public abstract class Ratio {
     }
 
 
-
     public double getResult() {
         return result;
     }

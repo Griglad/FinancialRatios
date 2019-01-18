@@ -25,6 +25,7 @@ public class Company {
     }
 
 
+
     public void addRatio(Ratio aRatio) {
 
 

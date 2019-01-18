@@ -12,6 +12,6 @@ public class PriceToSales extends Ratio {
     public void printEvaluationInfo(String companyName) {
         double ratioToEvaluate = getResult();
 
-        System.out.printf("In" + companyName + " investors are willing to pay %.2f dollar/euro for every dollar/euro of sales a share made.\n",ratioToEvaluate);
+        System.out.printf("In " + companyName + " investors are willing to pay %.2f dollar/euro for every dollar/euro of sales a share made.\n",ratioToEvaluate);
     }
 }

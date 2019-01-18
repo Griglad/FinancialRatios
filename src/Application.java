@@ -23,8 +23,22 @@ public class Application {
 
     public static void main(String[] args) {
 
+        try {
+            startingMenu(yearInput());
+        } catch (InputMismatchException e) {
+            System.err.print("Please enter a numeric value");
+            scanner.close();
+        }
 
-        startingMenu();
+
+    }
+
+    public static int yearInput() {
+        System.out.println("Please Enter year to make calculations");
+
+        int year = scanner.nextInt();
+        scanner.nextLine();
+        return year;
 
 
     }
@@ -53,53 +67,62 @@ public class Application {
     }
 
 
-    private static void startingMenu() {
+    private static void startingMenu(int year) {
 
-        String regex = "[0-6]";
-
+        String regex1 = "[0-6]";
+        String regex2 = "[a-zA-Z]+\\.?";
         System.out.println("Enter please the company's name");
 
+
         String name = scanner.nextLine();
+        if (name.matches(regex2)) {
 
-        Company company = new Company(name);
+
+            Company company = new Company(name);
+
+            String ratioSelection = printRatiosInfo(company);
+            if (ratioSelection.matches(regex1)) {
+
+                processChoice(company, ratioSelection, year);
+            } else {
+                System.err.print("Only numbers are allowed from 0-6");
+                scanner.close();
+            }
 
 
-        String ratioSelection = printRatiosInfo(company);
-        if (ratioSelection.matches(regex)) {
-
-            processChoice(company, ratioSelection);
         } else {
-            System.err.print("Only numbers are allowed from 0-6");
+            System.err.print("Only letters are allowed for a company");
+            scanner.close();
         }
 
 
     }
 
 
-    public static void repeatMenu(Company company) {
+    public static void repeatMenu(Company company, int year) {
 
         String ratioSelection = printRatiosInfo(company);
-        processChoice(company, ratioSelection);
+        processChoice(company, ratioSelection, year);
 
 
     }
 
-    private static void processChoice(Company company, String ratioSelection) {
+    private static void processChoice(Company company, String ratioSelection, int year) {
 
 
         if (ratioSelection.equals("1")) {
 
-            firstChoiceSelected(company);
+            firstChoiceSelected(company, year);
 
         } else if (ratioSelection.equals("2")) {
 
-            secondChoiceSelected(company);
+            secondChoiceSelected(company, year);
         } else if (ratioSelection.equals("3")) {
-            thirdChoiceSelected(company);
+            thirdChoiceSelected(company, year);
         } else if (ratioSelection.equals("4")) {
-            fourthChoiceSelected(company);
+            fourthChoiceSelected(company, year);
         } else if (ratioSelection.equals("5")) {
-            fifthChoiceSelected(company);
+            fifthChoiceSelected(company, year);
         } else if (ratioSelection.equals("6")) {
             sixChoiceSelected();
         }
@@ -107,11 +130,13 @@ public class Application {
     }
 
 
-    private static void firstChoiceSelected(Company company) {
+    private static void firstChoiceSelected(Company company, int year) {
 
         System.out.println("*C)Current Ratio");
         System.out.println(" ----------------");
         System.out.println("*Q)Quick Ratio");
+
+
 
         String choice = scanner.nextLine();
         if (choice.equalsIgnoreCase("C")) {
@@ -162,15 +187,21 @@ public class Application {
             quickRatio.ratioCalculation(liquidAssets, currentLiabilities);
 
 
+
+        } else {
+            System.err.println("Wrong input choice");
+            System.out.println("Enter the right one Please");
+            firstChoiceSelected(company, year);
         }
 
-        nextStep(company);
+
+        nextStep(company, year);
 
 
     }
 
 
-    public static void nextStep(Company company) {
+    public static void nextStep(Company company, int year) {
         scanner.nextLine();
 
 
@@ -187,15 +218,15 @@ public class Application {
 
         if (dec.equalsIgnoreCase("comp")) {
             System.out.println("Note: You should compare Ratios with the same type between companies.Furthermore compare companies which belong to the same industry");
-            startingMenu();
+            startingMenu(year);
         } else if (dec.equalsIgnoreCase("cont")) {
 
-            repeatMenu(company);
+            repeatMenu(company, year);
 
         } else if (dec.equalsIgnoreCase("res")) {
 
             Collections.sort(companyList, Collections.reverseOrder(new CompanyComparator()));
-
+            System.out.println("      Year of Calculations:" + year);
             if (companyList.size() > 1) {
 
 
@@ -203,7 +234,7 @@ public class Application {
                     if (r instanceof ReturnOnAssets || r instanceof ReturnOnCapitalEmployed || r instanceof ReturnOnEquity || r instanceof NetProfitMargin) {
                         System.out.println("Average " + r.getClass().getSimpleName() + " Ratio by industry is " + Math.round(calcAverage()) + "%");
                     } else {
-                        System.out.printf("Average " + r.getClass().getSimpleName() + " by industry is %.2f\n", calcAverage());
+                        System.out.printf("Average " + r.getClass().getSimpleName() + " Ratio by industry is %.2f\n", calcAverage());
 
 
                     }
@@ -212,6 +243,7 @@ public class Application {
 
 
             }
+
 
 
             for (Company c : companyList) {
@@ -223,7 +255,6 @@ public class Application {
             }
 
 
-            scanner.close();
         }
     }
 
@@ -241,7 +272,7 @@ public class Application {
     }
 
 
-    public static void secondChoiceSelected(Company company) {
+    public static void secondChoiceSelected(Company company, int year) {
 
         System.out.println("*ROA)Return on Assets");
         System.out.println(" --------------------");
@@ -306,13 +337,13 @@ public class Application {
         }
 
 
-        nextStep(company);
+        nextStep(company, year);
 
 
     }
 
 
-    public static void thirdChoiceSelected(Company company) {
+    public static void thirdChoiceSelected(Company company, int year) {
 
         System.out.println("*I)Inventory TurnOver");
         System.out.println(" ----------------");
@@ -349,13 +380,13 @@ public class Application {
             assetTurnOver.ratioCalculation(revenue, averageTotalAssets);
         }
 
-        nextStep(company);
+        nextStep(company, year);
 
 
     }
 
 
-    public static void fourthChoiceSelected(Company company) {
+    public static void fourthChoiceSelected(Company company, int year) {
 
         System.out.println("*D)Debt Ratio");
         System.out.println("*D/E)Debt to Equity");
@@ -409,12 +440,12 @@ public class Application {
 
             interestCoverage.ratioCalculation(ebit, interestExpense);
         }
-        nextStep(company);
+        nextStep(company, year);
 
 
     }
 
-    public static void fifthChoiceSelected(Company company) {
+    public static void fifthChoiceSelected(Company company, int year) {
         System.out.println("*P/E)Price To Earnings");
         System.out.println("*P/B)Price to Book Value");
         System.out.println("*P/S) Price to Sales");
@@ -484,7 +515,7 @@ public class Application {
 
 
         }
-        nextStep(company);
+        nextStep(company, year);
     }
 
     public static void sixChoiceSelected() {
