@@ -22,7 +22,6 @@ public class RatioStatistics {
             StatsNode n = nodes.get(name);
             n.value += r.getResult();
             n.counter += 1;
-            //n.percent = (r instanceof ReturnOnAssets || r instanceof NetProfitMargin || r instanceof ReturnOnEquity || r instanceof ReturnOnCapitalEmployed);
             nodes.put(name, n);
         }
         else
