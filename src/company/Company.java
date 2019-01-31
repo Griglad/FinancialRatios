@@ -5,6 +5,7 @@ import Profitability.NetProfitMargin;
 import Profitability.ReturnOnAssets;
 import Profitability.ReturnOnCapitalEmployed;
 import Profitability.ReturnOnEquity;
+import liquidity.Current;
 import ratio.Ratio;
 
 import java.util.ArrayList;
@@ -55,6 +56,8 @@ public class Company {
 
 
     }
+
+
 
     public double getRatioByResult() {
         double res = 0;

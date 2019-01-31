@@ -1,8 +1,34 @@
 package activity;
+import company.Company;
 import ratio.Ratio;
+
+import java.util.Scanner;
 
 public class AssetTurnOver extends Ratio {
 
+
+    @Override
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+
+
+            company.addRatio(ratio);
+            System.out.println("Please insert Gross revenue");
+            double grossRevenue = scanner.nextDouble();
+            System.out.println("Please insert Cost of Sales or Cost Of Goods Sold");
+            double cogs = scanner.nextDouble();
+            double revenue = grossRevenue + cogs;
+            System.out.println("Please insert assets of current year");
+            double assetsOfCurrentYear = scanner.nextDouble();
+            System.out.println("Please insert assets of previous year");
+            double assetsOfPreviousYear = scanner.nextDouble();
+            double averageTotalAssets = (assetsOfCurrentYear + assetsOfPreviousYear) / 2;
+            ratio.ratioCalculation(revenue, averageTotalAssets);
+            return ratio;
+
+
+
+
+    }
 
     @Override
     public void printInfo() {
@@ -17,5 +43,10 @@ public class AssetTurnOver extends Ratio {
 
         System.out.printf("For every dollar/euro in assets " + companyName +  " generates %.2f dollar/euro in sales\n",ratioToEvaluate );
 
+    }
+
+    @Override
+    public Ratio createSame() {
+        return new AssetTurnOver();
     }
 }

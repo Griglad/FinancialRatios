@@ -1,5 +1,8 @@
 package liquidity;
+import company.Company;
 import ratio.Ratio;
+
+import java.util.Scanner;
 
 public class Current extends Ratio {
 
@@ -23,6 +26,33 @@ public class Current extends Ratio {
 
 
     }
+
+    @Override
+    public Ratio createSame() {
+        return new Current();
+    }
+
+
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+
+
+        company.addRatio(ratio);
+
+        System.out.println("Please insert the Current Assets");
+
+        double currentAssets = scanner.nextDouble();
+
+        System.out.println("Please insert the Current Liabilities");
+
+        double currentLiabilities = scanner.nextDouble();
+
+        ratio.ratioCalculation(currentAssets, currentLiabilities);
+
+        return ratio;
+
+
+    }
+
 
 
 }

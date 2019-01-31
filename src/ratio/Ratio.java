@@ -1,5 +1,9 @@
 package ratio;
 
+import company.Company;
+
+import java.util.Scanner;
+
 public abstract class Ratio {
 
     protected double result;
@@ -7,21 +11,19 @@ public abstract class Ratio {
 
     public double ratioCalculation(double amount1, double amount2) {
 
-        result = (amount1 / amount2);
-
+        result = (amount2 != 0) ? (amount1 / amount2) : 0;
         return result;
     }
 
 
     public double percentageRatioCalculation(double amount1, double amount2) {
 
-
-        result = (amount1 * 100 / amount2);
-
-       return result;
-
+        result = (amount2 != 0) ? (amount1 * 100 / amount2) : 0;
+        return result;
     }
 
+
+    public abstract Ratio calcInputs(Company company,Ratio ratio,Scanner scanner);
 
     public double getResult() {
         return result;
@@ -30,6 +32,8 @@ public abstract class Ratio {
     public abstract void printInfo();
 
     public abstract void printEvaluationInfo(String companyName);
+
+    public abstract Ratio createSame();
 
     @Override
     public String toString() {

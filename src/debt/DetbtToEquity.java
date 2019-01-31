@@ -1,9 +1,30 @@
 package debt;
 
 
+import company.Company;
 import ratio.Ratio;
 
+import java.util.Scanner;
+
 public class DetbtToEquity extends Ratio {
+
+    @Override
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+
+        company.addRatio(ratio);
+        System.out.println("Please insert total Debt or total Liabilities");
+
+        double totalDebt = scanner.nextDouble();
+
+        System.out.println("Please insert total Stakeholders Equity");
+
+        double totalEquity = scanner.nextDouble();
+
+        ratio.ratioCalculation(totalDebt, totalEquity);
+        return ratio;
+    }
+
+
 
     @Override
     public void printInfo() {
@@ -15,5 +36,10 @@ public class DetbtToEquity extends Ratio {
         double ratioToEvaluate = getResult();
 
         System.out.printf("For every dollar/euro owned by the stakeholders " +companyName+ " owes %.2f to creditors\n",ratioToEvaluate);
+    }
+
+    @Override
+    public Ratio createSame() {
+        return null;
     }
 }

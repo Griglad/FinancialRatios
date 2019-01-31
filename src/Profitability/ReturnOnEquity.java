@@ -1,8 +1,28 @@
 package Profitability;
+import company.Company;
 import ratio.Ratio;
+
+import java.util.Scanner;
 
 
 public class ReturnOnEquity extends Ratio {
+
+    @Override
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+
+
+
+            company.addRatio(ratio);
+
+
+            System.out.println("Please insert net Income or net Profit");
+            double netIncome = scanner.nextDouble();
+            System.out.println("Please insert total equity");
+            double totalEquity = scanner.nextDouble();
+            ratio.percentageRatioCalculation(netIncome, totalEquity);
+            return ratio;
+        }
+
 
     @Override
     public void printInfo() {
@@ -19,6 +39,11 @@ public class ReturnOnEquity extends Ratio {
         System.out.printf("Every dollar/euro of common shareholders equity earned about %.2f" + " this year\n",ratioToFormat);
 
 
+    }
+
+    @Override
+    public Ratio createSame() {
+        return new ReturnOnEquity();
     }
 
 

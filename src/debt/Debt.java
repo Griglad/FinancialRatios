@@ -1,8 +1,30 @@
 package debt;
+import company.Company;
 import ratio.Ratio;
+
+import java.util.Scanner;
 
 public class Debt extends Ratio {
 
+
+    @Override
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+
+
+            company.addRatio(ratio);
+            System.out.println("Please insert total Liabilities");
+
+            double totalLiabilites = scanner.nextDouble();
+
+
+            System.out.println("Please insert total Assets");
+
+            double totalAssets = scanner.nextDouble();
+
+            ratio.ratioCalculation(totalLiabilites, totalAssets);
+            return ratio;
+
+    }
 
     @Override
     public void printInfo() {
@@ -17,5 +39,10 @@ public class Debt extends Ratio {
         System.out.printf(companyName + " for every dollar/euro has in assets it has %.2f dollar/euro worth of liabilities\n",ratioToEvaluate);
 
 
+    }
+
+    @Override
+    public Ratio createSame() {
+        return null;
     }
 }

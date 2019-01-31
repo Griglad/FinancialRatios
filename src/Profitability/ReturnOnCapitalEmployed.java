@@ -1,9 +1,30 @@
 package Profitability;
 
+import company.Company;
 import ratio.Ratio;
+
+import java.util.Scanner;
 
 public class ReturnOnCapitalEmployed extends Ratio {
 
+
+    @Override
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+
+            company.addRatio(ratio);
+
+            System.out.println("Please insert profit before interest and taxes or Ebit");
+            double ebit = scanner.nextDouble();
+            System.out.println("Please insert Total Assets");
+            double totalAssets = scanner.nextDouble();
+            System.out.println("Please insert Current Liabilities");
+            double currentLiabilites = scanner.nextDouble();
+            double employedCapital = totalAssets - currentLiabilites;
+            ratio.percentageRatioCalculation(ebit, employedCapital);
+            return ratio;
+
+
+    }
 
     @Override
     public void printInfo() {
@@ -21,7 +42,10 @@ public class ReturnOnCapitalEmployed extends Ratio {
         System.out.printf("Every dollar/euro invested in employed capital "  +companyName +   " earns %.2f"  +" dollars/euros\n",ratioToformat);
     }
 
-
+    @Override
+    public Ratio createSame() {
+        return new ReturnOnCapitalEmployed();
+    }
 
 
 }

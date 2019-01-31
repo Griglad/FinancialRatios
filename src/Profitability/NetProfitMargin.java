@@ -1,8 +1,28 @@
 package Profitability;
 
+import company.Company;
 import ratio.Ratio;
 
+import java.util.Scanner;
+
 public class NetProfitMargin extends Ratio {
+
+
+    @Override
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+
+            company.addRatio(ratio);
+            System.out.println("Please insert net income or net Profit");
+            double netIncome = scanner.nextDouble();
+            System.out.println("Please insert Gross Revenue");
+            double grossRevenue = scanner.nextDouble();
+            System.out.println("Please insert Cost of sales or Cost of Goods Sold");
+            double cogs = scanner.nextDouble();
+            double revenue = grossRevenue + cogs;
+            ratio.percentageRatioCalculation(netIncome, revenue);
+            return ratio;
+
+        }
 
 
     @Override
@@ -18,6 +38,11 @@ public class NetProfitMargin extends Ratio {
 
         System.out.printf(companyName + " for each 1 dollar/euro of revenue earns %.2f dollar/euros\n",ratioToFormat);
 
+    }
+
+    @Override
+    public Ratio createSame() {
+        return null;
     }
 
 

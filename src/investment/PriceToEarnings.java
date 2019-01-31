@@ -1,9 +1,32 @@
 package investment;
 
 
+import company.Company;
 import ratio.Ratio;
 
+import java.util.Scanner;
+
 public class PriceToEarnings extends Ratio {
+
+
+    @Override
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+
+            company.addRatio(ratio);
+
+            System.out.println("Please insert Price Per Share or stocks price");
+
+            double stockPrice = scanner.nextDouble();
+
+            System.out.println("Please insert Earnings Per Share");
+
+            double eps = scanner.nextDouble();
+
+            ratio.ratioCalculation(stockPrice, eps);
+
+
+            return ratio;
+        }
 
 
     @Override
@@ -17,5 +40,10 @@ public class PriceToEarnings extends Ratio {
 
         System.out.printf("The market is willing to pay %.2f dollar/euro for every 1 dollar/euro of earnings\n",ratioToEvaluate);
 
+    }
+
+    @Override
+    public Ratio createSame() {
+        return null;
     }
 }

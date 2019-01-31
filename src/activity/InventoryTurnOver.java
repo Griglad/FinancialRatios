@@ -1,9 +1,31 @@
 package activity;
 
 
+import company.Company;
 import ratio.Ratio;
 
+import java.util.Scanner;
+
 public class InventoryTurnOver extends Ratio {
+
+    @Override
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+       {
+
+            company.addRatio(ratio);
+            System.out.println("Please insert Cost of Goods Sold or Cost of sales");
+            double cogs = scanner.nextDouble();
+            System.out.println("Please insert inventory of currentYear");
+            double inventoryCurrent = scanner.nextDouble();
+            System.out.println("Please insert inventory of previous year");
+            double inventoryPrevious = scanner.nextDouble();
+            double averageInventory = (inventoryCurrent + inventoryPrevious) / 2;
+            ratio.ratioCalculation(cogs, averageInventory);
+            return ratio;
+
+
+        }
+    }
 
     @Override
     public void printInfo() {
@@ -30,5 +52,10 @@ public class InventoryTurnOver extends Ratio {
        }
 
 
+    }
+
+    @Override
+    public Ratio createSame() {
+        return new InventoryTurnOver();
     }
 }
