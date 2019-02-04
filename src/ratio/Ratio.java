@@ -7,6 +7,7 @@ import java.util.Scanner;
 public abstract class Ratio {
 
     protected double result;
+    protected String year;
 
 
     public double ratioCalculation(double amount1, double amount2) {
@@ -15,6 +16,13 @@ public abstract class Ratio {
         return result;
     }
 
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
 
     public double percentageRatioCalculation(double amount1, double amount2) {
 
@@ -23,7 +31,7 @@ public abstract class Ratio {
     }
 
 
-    public abstract Ratio calcInputs(Company company,Ratio ratio,Scanner scanner);
+    public abstract Ratio calcInputs(Company company, Ratio ratio, Scanner scanner);
 
     public double getResult() {
         return result;

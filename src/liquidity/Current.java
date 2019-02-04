@@ -7,6 +7,29 @@ import java.util.Scanner;
 public class Current extends Ratio {
 
 
+    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+
+
+        company.addRatio(ratio);
+
+        System.out.println("Please insert the Current Assets");
+
+        double currentAssets = scanner.nextDouble();
+
+
+
+        System.out.println("Please insert the Current Liabilities");
+
+        double currentLiabilities = scanner.nextDouble();
+
+        ratio.ratioCalculation(currentAssets, currentLiabilities);
+
+        return ratio;
+
+
+    }
+
+
     @Override
     public void printInfo() {
         System.out.println("The current ratio is a liquidity ratio that measures a company's ability to pay short-term and long-term obligations");
@@ -32,28 +55,6 @@ public class Current extends Ratio {
         return new Current();
     }
 
-
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
-
-
-        company.addRatio(ratio);
-
-        System.out.println("Please insert the Current Assets");
-
-        double currentAssets = scanner.nextDouble();
-
-
-
-        System.out.println("Please insert the Current Liabilities");
-
-        double currentLiabilities = scanner.nextDouble();
-
-        ratio.ratioCalculation(currentAssets, currentLiabilities);
-
-        return ratio;
-
-
-    }
 
 
 

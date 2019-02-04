@@ -12,8 +12,9 @@ import java.util.ArrayList;
 
 public class Company {
     private String name;
-    private String year;
+
     private ArrayList<Ratio> ratiosList = new ArrayList<>();
+
 
 
     public String getName(){
@@ -25,13 +26,6 @@ public class Company {
     }
 
 
-    public void setYear(String year){
-        this.year = year;
-    }
-
-    public String getYear(){
-        return year;
-    }
 
 
     public void addRatio(Ratio aRatio) {
@@ -48,12 +42,12 @@ public class Company {
 
         for (Ratio r : ratiosList) {
             if (r instanceof ReturnOnAssets || r instanceof ReturnOnEquity || r instanceof ReturnOnCapitalEmployed || r instanceof NetProfitMargin) {
-                System.out.println(name + " " + r.getClass().getSimpleName() + " Ratio in " + year+ " is approximately " + Math.round(r.getResult()) + "%");
+                System.out.println(name + " " + r.getClass().getSimpleName() + " Ratio in " + r.getYear()+ " is approximately " + Math.round(r.getResult()) + "%");
                 r.printEvaluationInfo(name);
                 System.out.println("---------------------------------------------------------------");
             } else {
 
-                System.out.printf(name + " " + r.getClass().getSimpleName() + " Ratio in " + year+ " is %.2f.",r.getResult());
+                System.out.printf(name + " " + r.getClass().getSimpleName() + " Ratio in " + r.getYear()+ " is %.2f.",r.getResult());
                 r.printEvaluationInfo(name);
                 System.out.println("---------------------------------------------------------------");
             }

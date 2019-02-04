@@ -11,18 +11,18 @@ public class NetProfitMargin extends Ratio {
     @Override
     public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
 
-            company.addRatio(ratio);
-            System.out.println("Please insert net income or net Profit");
-            double netIncome = scanner.nextDouble();
-            System.out.println("Please insert Gross Revenue");
-            double grossRevenue = scanner.nextDouble();
-            System.out.println("Please insert Cost of sales or Cost of Goods Sold");
-            double cogs = scanner.nextDouble();
-            double revenue = grossRevenue + cogs;
-            ratio.percentageRatioCalculation(netIncome, revenue);
-            return ratio;
+        company.addRatio(ratio);
+        System.out.println("Please insert net income or net Profit");
+        double netIncome = scanner.nextDouble();
+        System.out.println("Please insert Gross Revenue");
+        double grossRevenue = scanner.nextDouble();
+        System.out.println("Please insert Cost of sales or Cost of Goods Sold");
+        double cogs = scanner.nextDouble();
+        double revenue = grossRevenue + cogs;
+        ratio.percentageRatioCalculation(netIncome, revenue);
+        return ratio;
 
-        }
+    }
 
 
     @Override
@@ -34,15 +34,15 @@ public class NetProfitMargin extends Ratio {
     public void printEvaluationInfo(String companyName) {
 
         double ratioToEvaluate = getResult();
-        double ratioToFormat = ratioToEvaluate/100;
+        double ratioToFormat = ratioToEvaluate / 100;
 
-        System.out.printf(companyName + " for each 1 dollar/euro of revenue earns %.2f dollar/euros\n",ratioToFormat);
+        System.out.printf(companyName + " for each 1 dollar/euro of revenue earns %.2f dollar/euros\n", ratioToFormat);
 
     }
 
     @Override
     public Ratio createSame() {
-        return null;
+        return new NetProfitMargin();
     }
 
 

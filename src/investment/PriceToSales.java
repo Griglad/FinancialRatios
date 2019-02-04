@@ -41,6 +41,7 @@ public class PriceToSales extends Ratio {
 
     @Override
     public Ratio createSame() {
-        return null;
+        return new PriceToSales();
+
     }
 }

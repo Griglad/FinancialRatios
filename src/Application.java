@@ -31,7 +31,7 @@ public class Application {
 
     }
 
-    public static String yearInput() {
+    private static String yearInput() {
         String yearRegex = "^[0-9]{4}$";
         System.out.println("Please Enter year to make calculations");
         String inputYear = scanner.nextLine();
@@ -97,7 +97,7 @@ public class Application {
 
         Ratio ratio = null;
 
-        company.setYear(year);
+
         String ratioSelection = printRatiosInfo(company);
         if (ratioSelection.matches(regex1)) {
 
@@ -112,7 +112,7 @@ public class Application {
     }
 
 
-    public static void repeatMenu(Company company, String year, Ratio ratio) {
+    private static void repeatMenu(Company company, String year, Ratio ratio) {
         ratio = null;
         String ratioSelection = printRatiosInfo(company);
         processChoice(company, ratioSelection, year, ratio);
@@ -154,12 +154,14 @@ public class Application {
         String choice = scanner.nextLine();
         if (choice.equalsIgnoreCase("C")) {
             ratio = new Current();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
         } else if (choice.equalsIgnoreCase("Q")) {
 
             ratio = new Quick();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
@@ -177,7 +179,7 @@ public class Application {
     }
 
 
-    public static void secondChoiceSelected(Company company, String year, Ratio ratio) {
+    private static void secondChoiceSelected(Company company, String year, Ratio ratio) {
 
         System.out.println("*ROA)Return on Assets");
         System.out.println(" --------------------");
@@ -191,6 +193,7 @@ public class Application {
 
         if (choice.equalsIgnoreCase("ROA")) {
             ratio = new ReturnOnAssets();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
@@ -198,6 +201,7 @@ public class Application {
         } else if (choice.equalsIgnoreCase("ROE")) {
 
             ratio = new ReturnOnEquity();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
@@ -205,12 +209,14 @@ public class Application {
         } else if (choice.equalsIgnoreCase("ROCE")) {
 
             ratio = new ReturnOnCapitalEmployed();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
         } else if (choice.equalsIgnoreCase("NET")) {
 
             ratio = new NetProfitMargin();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
@@ -226,7 +232,7 @@ public class Application {
 
     }
 
-    public static void thirdChoiceSelected(Company company, String year, Ratio ratio) {
+    private static void thirdChoiceSelected(Company company, String year, Ratio ratio) {
 
         System.out.println("*I)Inventory TurnOver");
         System.out.println(" ----------------");
@@ -236,12 +242,14 @@ public class Application {
         if (choice.equalsIgnoreCase("I")) {
 
             ratio = new InventoryTurnOver();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
 
         } else if (choice.equalsIgnoreCase("A")) {
             ratio = new AssetTurnOver();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
@@ -257,7 +265,7 @@ public class Application {
     }
 
 
-    public static void fourthChoiceSelected(Company company, String year, Ratio ratio) {
+    private static void fourthChoiceSelected(Company company, String year, Ratio ratio) {
 
         System.out.println("*D)Debt Ratio");
         System.out.println("*D/E)Debt to Equity");
@@ -266,12 +274,14 @@ public class Application {
 
         if (choice.equalsIgnoreCase("D")) {
             ratio = new Debt();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
 
         } else if (choice.equalsIgnoreCase("D/E")) {
             ratio = new DetbtToEquity();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
@@ -279,6 +289,7 @@ public class Application {
         } else if (choice.equalsIgnoreCase(("I"))) {
 
             ratio = new InterestCoverage();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
@@ -292,7 +303,7 @@ public class Application {
 
     }
 
-    public static void fifthChoiceSelected(Company company, String year, Ratio ratio) {
+    private static void fifthChoiceSelected(Company company, String year, Ratio ratio) {
         System.out.println("*P/E)Price To Earnings");
         System.out.println("*P/B)Price to Book Value");
         System.out.println("*P/S) Price to Sales");
@@ -300,6 +311,7 @@ public class Application {
 
         if (choice.equalsIgnoreCase("P/E")) {
             ratio = new PriceToEarnings();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
@@ -307,6 +319,7 @@ public class Application {
         } else if (choice.equalsIgnoreCase("P/B")) {
 
             ratio = new PriceToBookValue();
+            ratio.setYear(year);
             ratio.printInfo();
             ratio.calcInputs(company, ratio, scanner);
 
@@ -315,6 +328,7 @@ public class Application {
 
 
             ratio = new PriceToSales();
+            ratio.setYear(year);
 
             ratio.printInfo();
 
@@ -331,45 +345,63 @@ public class Application {
     }
 
 
-    public static void nextStep(Company company, String year, Ratio ratio) {
+    private static void nextStep(Company company, String year, Ratio ratio) {
 
         scanner.nextLine();
 
+        System.out.println("How do you want to Procceed?");
         System.out.println("-----------------------------------------------------");
-        System.out.println("*cont)Do you want to continue with this company?");
-        System.out.println("*comp)Do you want to compare with other companies?");
-        System.out.println("*res)Do you want to see results?");
+        System.out.println("*continue)Do you want to continue with " + company.getName() + " in " + year);
+        System.out.println("*another)Do you want to continue with " + company.getName() + " in another year?");
+        System.out.println("*compare)Do you want to compare " + company.getName() + " " +ratio.getClass().getSimpleName() + " Ratio with other companies in " + year);
+        System.out.println("*compare year)Do you want to compare " + company.getName() + " " +  ratio.getClass().getSimpleName() +" Ratio with other companies in another year?");
+        System.out.println("*results)Do you want to see the results?");
 
 
         String dec = scanner.nextLine();
-
+        if (!numOfYears.contains(year)) {
+            numOfYears.add(year);
+        }
 
         if (!companyList.contains(company)) {
             companyList.add(company);
         }
 
 
-        if (dec.equalsIgnoreCase("comp")) {
+        if (dec.equalsIgnoreCase("compare")) {
             Company newCompany = companyInput();
-            newCompany.setYear(year);
-            Ratio newRatio = ratio.createSame();
 
+            Ratio newRatio = ratio.createSame();
+            newRatio.setYear(year);
             newRatio.calcInputs(newCompany, newRatio, scanner);
 
 
             nextStep(newCompany, year, ratio);
 
 
-        } else if (dec.equalsIgnoreCase("cont")) {
+        } else if (dec.equalsIgnoreCase("compare year")) {
+            Company newCompany = companyInput();
+            Ratio newRatio = ratio.createSame();
+            String newYear = yearInput();
+            newRatio.setYear(newYear);
+            newRatio.calcInputs(newCompany, newRatio, scanner);
+            nextStep(newCompany, newYear, ratio);
+
+        } else if (dec.equalsIgnoreCase("continue")) {
+
 
             repeatMenu(company, year, ratio);
 
 
-        } else if (dec.equalsIgnoreCase("res")) {
+        } else if (dec.equalsIgnoreCase("another")) {
+
+            startingMenu(yearInput(), company);
+
+        } else if (dec.equalsIgnoreCase("results")) {
 
             Collections.sort(companyList, Collections.reverseOrder(new CompanyComparator()));
 
-            numOfYears.add(year);
+
             System.out.println("      Year of Calculations: " + numOfYears);
 
             if (companyList.size() > 1) {
@@ -405,10 +437,6 @@ public class Application {
 
     }
 
-    public void addYears(String year) {
-
-        numOfYears.add(year);
-    }
 
     public static void endingMessage() {
 

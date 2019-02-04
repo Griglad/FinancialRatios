@@ -44,6 +44,6 @@ public class PriceToEarnings extends Ratio {
 
     @Override
     public Ratio createSame() {
-        return null;
+        return new PriceToEarnings();
     }
 }

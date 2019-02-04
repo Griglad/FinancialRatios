@@ -59,6 +59,7 @@ public class PriceToBookValue extends Ratio {
 
     @Override
     public Ratio createSame() {
-        return null;
+        return new PriceToBookValue();
+
     }
 }

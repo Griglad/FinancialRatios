@@ -53,6 +53,6 @@ public class InterestCoverage extends Ratio {
 
     @Override
     public Ratio createSame() {
-        return null;
+        return new InterestCoverage();
     }
 }

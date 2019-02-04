@@ -40,6 +40,6 @@ public class DetbtToEquity extends Ratio {
 
     @Override
     public Ratio createSame() {
-        return null;
+        return new DetbtToEquity();
     }
 }

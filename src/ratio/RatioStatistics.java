@@ -39,15 +39,6 @@ public class RatioStatistics {
         return nodes;
     }
 
-    public HashMap<String, Double> getAverages()
-    {
-        HashMap<String, Double> result = new HashMap<String, Double>();
-        for (HashMap.Entry<String, StatsNode> entry : nodes.entrySet()) {
-            result.put(entry.getKey(), entry.getValue().getAverage());
-        }
-
-        return result;
-    }
 
     private HashMap<String, StatsNode> nodes;
 }
