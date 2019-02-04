@@ -173,7 +173,7 @@ public class Application {
         }
 
 
-        nextStep(company, year, ratio);
+        procceedStep(company, year, ratio);
 
 
     }
@@ -227,7 +227,7 @@ public class Application {
         }
 
 
-        nextStep(company, year, ratio);
+        procceedStep(company, year, ratio);
 
 
     }
@@ -259,7 +259,7 @@ public class Application {
             thirdChoiceSelected(company, year, ratio);
         }
 
-        nextStep(company, year, ratio);
+        procceedStep(company, year, ratio);
 
 
     }
@@ -298,7 +298,7 @@ public class Application {
             checkInput();
             fourthChoiceSelected(company, year, ratio);
         }
-        nextStep(company, year, ratio);
+        procceedStep(company, year, ratio);
 
 
     }
@@ -341,11 +341,11 @@ public class Application {
         }
 
 
-        nextStep(company, year, ratio);
+        procceedStep(company, year, ratio);
     }
 
 
-    private static void nextStep(Company company, String year, Ratio ratio) {
+    private static void procceedStep(Company company, String year, Ratio ratio) {
 
         scanner.nextLine();
 
@@ -353,8 +353,8 @@ public class Application {
         System.out.println("-----------------------------------------------------");
         System.out.println("*continue)Do you want to continue with " + company.getName() + " in " + year);
         System.out.println("*another)Do you want to continue with " + company.getName() + " in another year?");
-        System.out.println("*compare)Do you want to compare " + company.getName() + " " +ratio.getClass().getSimpleName() + " Ratio with other companies in " + year);
-        System.out.println("*compare year)Do you want to compare " + company.getName() + " " +  ratio.getClass().getSimpleName() +" Ratio with other companies in another year?");
+        System.out.println("*compare)Do you want to compare " + company.getName() + " " + ratio.getClass().getSimpleName() + " Ratio with other companies in " + year);
+        System.out.println("*compare year)Do you want to compare " + company.getName() + " " + ratio.getClass().getSimpleName() + " Ratio with other companies in another year?");
         System.out.println("*results)Do you want to see the results?");
 
 
@@ -376,7 +376,7 @@ public class Application {
             newRatio.calcInputs(newCompany, newRatio, scanner);
 
 
-            nextStep(newCompany, year, ratio);
+            procceedStep(newCompany, year, ratio);
 
 
         } else if (dec.equalsIgnoreCase("compare year")) {
@@ -385,7 +385,7 @@ public class Application {
             String newYear = yearInput();
             newRatio.setYear(newYear);
             newRatio.calcInputs(newCompany, newRatio, scanner);
-            nextStep(newCompany, newYear, ratio);
+            procceedStep(newCompany, newYear, ratio);
 
         } else if (dec.equalsIgnoreCase("continue")) {
 
