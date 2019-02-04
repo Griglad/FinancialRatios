@@ -42,6 +42,8 @@ public class Current extends Ratio {
 
         double currentAssets = scanner.nextDouble();
 
+
+
         System.out.println("Please insert the Current Liabilities");
 
         double currentLiabilities = scanner.nextDouble();
