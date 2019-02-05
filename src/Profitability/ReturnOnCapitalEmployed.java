@@ -28,7 +28,7 @@ public class ReturnOnCapitalEmployed extends Ratio {
 
     @Override
     public void printInfo() {
-        System.out.println("Return on capital employed or ROCE is a profitability ratio that measures how efficiently a company can generate profits from its capital employed by comparing net operating profit to capital employed.\nIn other words, return on capital employed shows investors how many dollars in profits each dollar of capital employed generates.\n");
+        System.out.println("Return on capital employed or ROCE is a profitability ratio that measures how efficiently a company can generate profits from its capital employed by comparing\nnet operating profit to capital employed.In other words, return on capital employed shows investors how many dollars in profits each dollar of capital employed generates.\n");
     }
 
     @Override

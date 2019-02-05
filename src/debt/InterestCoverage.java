@@ -29,7 +29,7 @@ public class InterestCoverage extends Ratio {
 
     @Override
     public void printInfo() {
-        System.out.println("The Interest Coverage Ratio (ICR) is a financial ratio that is used to determine the ability of a company to pay the interest on its outstanding debt.\nThe ICR is commonly used by lenders, creditors, and investors to determine the riskiness of lending capital to a company. The interest coverage ratio is also called the “times interest earned” ratio.\n");
+        System.out.println("The Interest Coverage Ratio (ICR) is a financial ratio that is used to determine the ability of a company to pay the interest on its outstanding debt.\nThe ICR is commonly used by lenders, creditors, and investors to determine the riskiness of lending capital to a company.\nThe interest coverage ratio is also called the “times interest earned” ratio.\n");
     }
 
     @Override

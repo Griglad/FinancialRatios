@@ -43,7 +43,7 @@ public class Quick extends Ratio {
     public void printInfo() {
 
 
-        System.out.println("The quick ratio or acid test ratio is a liquidity ratio that measures the ability of a company to pay its current liabilities\nwhen they come due with only quick assets.Quick assets are current assets that can be converted to cash within 90 days or in the short-term\n");
+        System.out.println("The quick ratio or acid test ratio is a liquidity ratio that measures the ability of a company to pay its current liabilities when they come due with only quick assets.\nQuick assets are current assets that can be converted to cash within 90 days or in the short-term\n");
 
 
     }
