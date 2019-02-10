@@ -1,6 +1,6 @@
 package Profitability;
 
-import company.Company;
+
 import ratio.Ratio;
 
 import java.util.Scanner;
@@ -10,9 +10,7 @@ public class ReturnOnAssets extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
-
-        company.addRatio(ratio);
+    public Ratio calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert net Income or net Profit");
@@ -23,9 +21,9 @@ public class ReturnOnAssets extends Ratio {
         double previousYearAssets = scanner.nextDouble();
         double averageTotalAssets = (currentYearAssets + previousYearAssets) / 2;
 
-        ratio.percentageRatioCalculation(netIncome, averageTotalAssets);
+        this.percentageRatioCalculation(netIncome, averageTotalAssets);
 
-        return ratio;
+        return this;
     }
 
 

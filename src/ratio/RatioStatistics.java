@@ -8,6 +8,7 @@ import Profitability.ReturnOnEquity;
 import java.util.HashMap;
 
 public class RatioStatistics {
+    private HashMap<String, StatsNode> nodes;
 
     public RatioStatistics()
     {
@@ -40,5 +41,5 @@ public class RatioStatistics {
     }
 
 
-    private HashMap<String, StatsNode> nodes;
+
 }

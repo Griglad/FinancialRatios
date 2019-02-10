@@ -1,14 +1,14 @@
 package investment;
-import company.Company;
+
 import ratio.Ratio;
 
 import java.util.Scanner;
 
 public class PriceToBookValue extends Ratio {
     @Override
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+    public Ratio calcInputs(Scanner scanner) {
 
-            company.addRatio(ratio);
+
             System.out.println("Please insert stocks Price");
 
             double stocksPrice = scanner.nextDouble();
@@ -30,9 +30,9 @@ public class PriceToBookValue extends Ratio {
             double bookValuePerShare = bookValue / stocksOutStanding;
 
 
-            ratio.ratioCalculation(stocksPrice, bookValuePerShare);
+            this.ratioCalculation(stocksPrice, bookValuePerShare);
 
-            return ratio;
+            return this;
         }
 
 

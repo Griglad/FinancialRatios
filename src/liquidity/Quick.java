@@ -1,6 +1,5 @@
 package liquidity;
 
-import company.Company;
 import ratio.Ratio;
 
 import java.util.Scanner;
@@ -10,10 +9,7 @@ public class Quick extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
-
-
-        company.addRatio(ratio);
+    public Ratio calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert the Current Assets");
@@ -32,9 +28,9 @@ public class Quick extends Ratio {
 
         double liquidAssets = currentAssets - inventory - prepaidExpenses;
 
-        ratio.ratioCalculation(liquidAssets, currentLiabilities);
+        this.ratioCalculation(liquidAssets, currentLiabilities);
 
-        return ratio;
+        return this;
 
     }
 

@@ -1,5 +1,5 @@
 package debt;
-import company.Company;
+
 import ratio.Ratio;
 
 import java.util.Scanner;
@@ -8,10 +8,10 @@ public class Debt extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+    public Ratio calcInputs(Scanner scanner) {
 
 
-            company.addRatio(ratio);
+
             System.out.println("Please insert total Liabilities");
 
             double totalLiabilites = scanner.nextDouble();
@@ -21,8 +21,8 @@ public class Debt extends Ratio {
 
             double totalAssets = scanner.nextDouble();
 
-            ratio.ratioCalculation(totalLiabilites, totalAssets);
-            return ratio;
+            this.ratioCalculation(totalLiabilites, totalAssets);
+            return this;
 
     }
 

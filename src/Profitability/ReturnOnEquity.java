@@ -1,6 +1,6 @@
 package Profitability;
 
-import company.Company;
+
 import ratio.Ratio;
 
 import java.util.Scanner;
@@ -9,18 +9,15 @@ import java.util.Scanner;
 public class ReturnOnEquity extends Ratio {
 
     @Override
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
-
-
-        company.addRatio(ratio);
+    public Ratio calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert net Income or net Profit");
         double netIncome = scanner.nextDouble();
         System.out.println("Please insert total equity");
         double totalEquity = scanner.nextDouble();
-        ratio.percentageRatioCalculation(netIncome, totalEquity);
-        return ratio;
+        this.percentageRatioCalculation(netIncome, totalEquity);
+        return this;
     }
 
 

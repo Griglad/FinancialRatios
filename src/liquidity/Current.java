@@ -1,5 +1,5 @@
 package liquidity;
-import company.Company;
+
 import ratio.Ratio;
 
 import java.util.Scanner;
@@ -7,24 +7,20 @@ import java.util.Scanner;
 public class Current extends Ratio {
 
 
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+    public Ratio calcInputs(Scanner scanner) {
 
-
-        company.addRatio(ratio);
 
         System.out.println("Please insert the Current Assets");
 
         double currentAssets = scanner.nextDouble();
 
-
-
         System.out.println("Please insert the Current Liabilities");
 
         double currentLiabilities = scanner.nextDouble();
 
-        ratio.ratioCalculation(currentAssets, currentLiabilities);
+        this.ratioCalculation(currentAssets, currentLiabilities);
 
-        return ratio;
+        return this;
 
 
     }
@@ -42,7 +38,7 @@ public class Current extends Ratio {
             System.out.println(companyName + " may not have the capital  to meet its short term obligations");
 
         } else if (ratioToEvaluate >= 1 && ratioToEvaluate <= 3) {
-            System.out.println( companyName+ " can cover its short-term liabilities");
+            System.out.println(companyName + " can cover its short-term liabilities");
         } else if (ratioToEvaluate > 3) {
             System.out.println(companyName + " may not using its current assets efficiently");
         }
@@ -54,8 +50,6 @@ public class Current extends Ratio {
     public Ratio createSame() {
         return new Current();
     }
-
-
 
 
 }

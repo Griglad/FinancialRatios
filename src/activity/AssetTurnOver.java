@@ -1,5 +1,4 @@
 package activity;
-import company.Company;
 import ratio.Ratio;
 
 import java.util.Scanner;
@@ -8,10 +7,10 @@ public class AssetTurnOver extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+    public Ratio calcInputs( Scanner scanner) {
 
 
-            company.addRatio(ratio);
+
             System.out.println("Please insert Gross revenue");
             double grossRevenue = scanner.nextDouble();
             System.out.println("Please insert Cost of Sales or Cost Of Goods Sold");
@@ -22,8 +21,8 @@ public class AssetTurnOver extends Ratio {
             System.out.println("Please insert assets of previous year");
             double assetsOfPreviousYear = scanner.nextDouble();
             double averageTotalAssets = (assetsOfCurrentYear + assetsOfPreviousYear) / 2;
-            ratio.ratioCalculation(revenue, averageTotalAssets);
-            return ratio;
+            this.ratioCalculation(revenue, averageTotalAssets);
+            return this;
 
 
 

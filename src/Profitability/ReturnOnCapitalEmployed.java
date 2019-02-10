@@ -1,6 +1,6 @@
 package Profitability;
 
-import company.Company;
+
 import ratio.Ratio;
 
 import java.util.Scanner;
@@ -9,9 +9,8 @@ public class ReturnOnCapitalEmployed extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+    public Ratio calcInputs(Scanner scanner) {
 
-        company.addRatio(ratio);
 
         System.out.println("Please insert profit before interest and taxes or Ebit");
         double ebit = scanner.nextDouble();
@@ -20,8 +19,8 @@ public class ReturnOnCapitalEmployed extends Ratio {
         System.out.println("Please insert Current Liabilities");
         double currentLiabilites = scanner.nextDouble();
         double employedCapital = totalAssets - currentLiabilites;
-        ratio.percentageRatioCalculation(ebit, employedCapital);
-        return ratio;
+        this.percentageRatioCalculation(ebit, employedCapital);
+        return this;
 
 
     }

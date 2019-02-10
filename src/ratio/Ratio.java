@@ -1,7 +1,5 @@
 package ratio;
 
-import company.Company;
-
 import java.util.Scanner;
 
 public abstract class Ratio {
@@ -31,7 +29,7 @@ public abstract class Ratio {
     }
 
 
-    public abstract Ratio calcInputs(Company company, Ratio ratio, Scanner scanner);
+    public abstract Ratio calcInputs(Scanner scanner);
 
     public double getResult() {
         return result;

@@ -156,15 +156,16 @@ public class Application {
             ratio = new Current();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase("Q")) {
 
             ratio = new Quick();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else {
             checkInput();
@@ -195,31 +196,31 @@ public class Application {
             ratio = new ReturnOnAssets();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase("ROE")) {
 
             ratio = new ReturnOnEquity();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase("ROCE")) {
 
             ratio = new ReturnOnCapitalEmployed();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
         } else if (choice.equalsIgnoreCase("NET")) {
 
             ratio = new NetProfitMargin();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else {
             checkInput();
@@ -244,16 +245,15 @@ public class Application {
             ratio = new InventoryTurnOver();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase("A")) {
             ratio = new AssetTurnOver();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
         } else {
             checkInput();
             thirdChoiceSelected(company, year, ratio);
@@ -276,23 +276,23 @@ public class Application {
             ratio = new Debt();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase("D/E")) {
             ratio = new DetbtToEquity();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase(("I"))) {
 
             ratio = new InterestCoverage();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else {
             checkInput();
@@ -313,16 +313,16 @@ public class Application {
             ratio = new PriceToEarnings();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase("P/B")) {
 
             ratio = new PriceToBookValue();
             ratio.setYear(year);
             ratio.printInfo();
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase("P/S")) {
 
@@ -332,8 +332,8 @@ public class Application {
 
             ratio.printInfo();
 
-            ratio.calcInputs(company, ratio, scanner);
-
+            ratio.calcInputs(scanner);
+            company.addRatio(ratio);
 
         } else {
             checkInput();
@@ -373,10 +373,10 @@ public class Application {
 
             Ratio newRatio = ratio.createSame();
             newRatio.setYear(year);
-            newRatio.calcInputs(newCompany, newRatio, scanner);
+            newRatio.calcInputs(scanner);
+            newCompany.addRatio(newRatio);
 
-
-            procceedStep(newCompany, year, ratio);
+            procceedStep(newCompany, year, newRatio);
 
 
         } else if (dec.equalsIgnoreCase("compare year")) {
@@ -384,8 +384,9 @@ public class Application {
             Ratio newRatio = ratio.createSame();
             String newYear = yearInput();
             newRatio.setYear(newYear);
-            newRatio.calcInputs(newCompany, newRatio, scanner);
-            procceedStep(newCompany, newYear, ratio);
+            newRatio.calcInputs(scanner);
+            newCompany.addRatio(newRatio);
+            procceedStep(newCompany, newYear, newRatio);
 
         } else if (dec.equalsIgnoreCase("continue")) {
 

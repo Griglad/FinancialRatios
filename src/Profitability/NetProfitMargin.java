@@ -1,6 +1,5 @@
 package Profitability;
 
-import company.Company;
 import ratio.Ratio;
 
 import java.util.Scanner;
@@ -9,9 +8,9 @@ public class NetProfitMargin extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Company company, Ratio ratio, Scanner scanner) {
+    public Ratio calcInputs( Scanner scanner) {
 
-        company.addRatio(ratio);
+
         System.out.println("Please insert net income or net Profit");
         double netIncome = scanner.nextDouble();
         System.out.println("Please insert Gross Revenue");
@@ -19,8 +18,8 @@ public class NetProfitMargin extends Ratio {
         System.out.println("Please insert Cost of sales or Cost of Goods Sold");
         double cogs = scanner.nextDouble();
         double revenue = grossRevenue + cogs;
-        ratio.percentageRatioCalculation(netIncome, revenue);
-        return ratio;
+        this.percentageRatioCalculation(netIncome, revenue);
+        return this;
 
     }
 
