@@ -10,7 +10,7 @@ public class ReturnOnAssets extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert net Income or net Profit");
@@ -21,9 +21,9 @@ public class ReturnOnAssets extends Ratio {
         double previousYearAssets = scanner.nextDouble();
         double averageTotalAssets = (currentYearAssets + previousYearAssets) / 2;
 
-        this.percentageRatioCalculation(netIncome, averageTotalAssets);
+        return percentageRatioCalculation(netIncome, averageTotalAssets);
 
-        return this;
+
     }
 
 

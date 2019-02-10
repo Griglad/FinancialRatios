@@ -9,15 +9,15 @@ import java.util.Scanner;
 public class ReturnOnEquity extends Ratio {
 
     @Override
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert net Income or net Profit");
         double netIncome = scanner.nextDouble();
         System.out.println("Please insert total equity");
         double totalEquity = scanner.nextDouble();
-        this.percentageRatioCalculation(netIncome, totalEquity);
-        return this;
+        return percentageRatioCalculation(netIncome, totalEquity);
+
     }
 
 

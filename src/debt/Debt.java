@@ -8,7 +8,7 @@ public class Debt extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
 
@@ -21,8 +21,8 @@ public class Debt extends Ratio {
 
             double totalAssets = scanner.nextDouble();
 
-            this.ratioCalculation(totalLiabilites, totalAssets);
-            return this;
+            return ratioCalculation(totalLiabilites, totalAssets);
+
 
     }
 

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class PriceToBookValue extends Ratio {
     @Override
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
             System.out.println("Please insert stocks Price");
@@ -30,9 +30,9 @@ public class PriceToBookValue extends Ratio {
             double bookValuePerShare = bookValue / stocksOutStanding;
 
 
-            this.ratioCalculation(stocksPrice, bookValuePerShare);
+            return ratioCalculation(stocksPrice, bookValuePerShare);
 
-            return this;
+
         }
 
 

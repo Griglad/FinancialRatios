@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Current extends Ratio {
 
 
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert the Current Assets");
@@ -18,9 +18,7 @@ public class Current extends Ratio {
 
         double currentLiabilities = scanner.nextDouble();
 
-        this.ratioCalculation(currentAssets, currentLiabilities);
-
-        return this;
+        return ratioCalculation(currentAssets, currentLiabilities);
 
 
     }

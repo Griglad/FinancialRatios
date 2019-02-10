@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class DetbtToEquity extends Ratio {
 
     @Override
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert total Debt or total Liabilities");
@@ -20,8 +20,8 @@ public class DetbtToEquity extends Ratio {
 
         double totalEquity = scanner.nextDouble();
 
-        this.ratioCalculation(totalDebt, totalEquity);
-        return this;
+        return ratioCalculation(totalDebt, totalEquity);
+
     }
 
 

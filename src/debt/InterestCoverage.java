@@ -8,21 +8,18 @@ public class InterestCoverage extends Ratio {
 
 
     @Override
-    public Ratio calcInputs( Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
+        System.out.println("Please insert Earnings or profit before interest and taxes");
 
+        double ebit = scanner.nextDouble();
 
-            System.out.println("Please insert Earnings or profit before interest and taxes");
+        System.out.println("Please insert interest Expense");
 
-            double ebit = scanner.nextDouble();
+        double interestExpense = scanner.nextDouble();
 
-            System.out.println("Please insert interest Expense");
-
-            double interestExpense = scanner.nextDouble();
-
-            this.ratioCalculation(ebit, interestExpense);
-            return this;
+        return ratioCalculation(ebit, interestExpense);
 
 
     }
@@ -36,17 +33,14 @@ public class InterestCoverage extends Ratio {
     public void printEvaluationInfo(String companyName) {
         double ratioToEvaluate = getResult();
 
-        if(ratioToEvaluate < 1){
+        if (ratioToEvaluate < 1) {
             System.out.println(companyName + " is not making enough money to pay its interest payments");
 
-        }
-        else if(ratioToEvaluate == 1){
+        } else if (ratioToEvaluate == 1) {
             System.out.println(companyName + " makes just enough money to pay its interest payments");
 
-        }
-
-        else if(ratioToEvaluate > 1){
-            System.out.println( companyName + " makes approximately " + Math.round(ratioToEvaluate) + " times more earnings than its current interest payments");
+        } else if (ratioToEvaluate > 1) {
+            System.out.println(companyName + " makes approximately " + Math.round(ratioToEvaluate) + " times more earnings than its current interest payments");
         }
 
     }

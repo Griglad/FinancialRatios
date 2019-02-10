@@ -7,7 +7,7 @@ public class AssetTurnOver extends Ratio {
 
 
     @Override
-    public Ratio calcInputs( Scanner scanner) {
+    public double calcInputs( Scanner scanner) {
 
 
 
@@ -21,8 +21,8 @@ public class AssetTurnOver extends Ratio {
             System.out.println("Please insert assets of previous year");
             double assetsOfPreviousYear = scanner.nextDouble();
             double averageTotalAssets = (assetsOfCurrentYear + assetsOfPreviousYear) / 2;
-            this.ratioCalculation(revenue, averageTotalAssets);
-            return this;
+            return ratioCalculation(revenue, averageTotalAssets);
+
 
 
 

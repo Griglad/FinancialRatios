@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class PriceToSales extends Ratio {
     @Override
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert Net Sales");
@@ -17,10 +17,10 @@ public class PriceToSales extends Ratio {
 
         double marketCap = scanner.nextDouble();
 
-        this.ratioCalculation(netSales, marketCap);
+        return ratioCalculation(netSales, marketCap);
 
 
-        return this;
+
     }
 
 

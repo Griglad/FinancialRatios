@@ -8,7 +8,7 @@ public class NetProfitMargin extends Ratio {
 
 
     @Override
-    public Ratio calcInputs( Scanner scanner) {
+    public double calcInputs( Scanner scanner) {
 
 
         System.out.println("Please insert net income or net Profit");
@@ -18,8 +18,8 @@ public class NetProfitMargin extends Ratio {
         System.out.println("Please insert Cost of sales or Cost of Goods Sold");
         double cogs = scanner.nextDouble();
         double revenue = grossRevenue + cogs;
-        this.percentageRatioCalculation(netIncome, revenue);
-        return this;
+        return percentageRatioCalculation(netIncome, revenue);
+
 
     }
 

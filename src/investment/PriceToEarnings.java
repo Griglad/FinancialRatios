@@ -9,7 +9,7 @@ public class PriceToEarnings extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert Price Per Share or stocks price");
@@ -20,10 +20,10 @@ public class PriceToEarnings extends Ratio {
 
         double eps = scanner.nextDouble();
 
-        this.ratioCalculation(stockPrice, eps);
+        return ratioCalculation(stockPrice, eps);
 
 
-        return this;
+
     }
 
 

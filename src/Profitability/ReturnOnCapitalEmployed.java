@@ -9,7 +9,7 @@ public class ReturnOnCapitalEmployed extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert profit before interest and taxes or Ebit");
@@ -19,8 +19,9 @@ public class ReturnOnCapitalEmployed extends Ratio {
         System.out.println("Please insert Current Liabilities");
         double currentLiabilites = scanner.nextDouble();
         double employedCapital = totalAssets - currentLiabilites;
-        this.percentageRatioCalculation(ebit, employedCapital);
-        return this;
+
+        return percentageRatioCalculation(ebit, employedCapital);
+
 
 
     }

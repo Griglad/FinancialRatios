@@ -9,7 +9,7 @@ public class Quick extends Ratio {
 
 
     @Override
-    public Ratio calcInputs(Scanner scanner) {
+    public double calcInputs(Scanner scanner) {
 
 
         System.out.println("Please insert the Current Assets");
@@ -21,16 +21,16 @@ public class Quick extends Ratio {
         double inventory = scanner.nextDouble();
 
         System.out.println("Please insert the Current Liabilities");
-        Double currentLiabilities = scanner.nextDouble();
+        double currentLiabilities = scanner.nextDouble();
 
         System.out.println("Please insert Prepaid expenses");
         double prepaidExpenses = scanner.nextDouble();
 
         double liquidAssets = currentAssets - inventory - prepaidExpenses;
 
-        this.ratioCalculation(liquidAssets, currentLiabilities);
+        return ratioCalculation(liquidAssets, currentLiabilities);
 
-        return this;
+
 
     }
 

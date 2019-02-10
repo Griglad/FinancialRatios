@@ -29,7 +29,7 @@ public abstract class Ratio {
     }
 
 
-    public abstract Ratio calcInputs(Scanner scanner);
+    public abstract double calcInputs(Scanner scanner);
 
     public double getResult() {
         return result;
