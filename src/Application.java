@@ -126,17 +126,17 @@ public class Application {
 
         if (ratioSelection.equals("1")) {
 
-            firstChoiceSelected(company, year, ratio);
+            liquidityRatiosSelected(company, year, ratio);
 
         } else if (ratioSelection.equals("2")) {
 
-            secondChoiceSelected(company, year, ratio);
+            profitabilityRatiosSelected(company, year, ratio);
         } else if (ratioSelection.equals("3")) {
-            thirdChoiceSelected(company, year, ratio);
+            activityRatiosSelected(company, year, ratio);
         } else if (ratioSelection.equals("4")) {
-            fourthChoiceSelected(company, year, ratio);
+            debtRatiosSelected(company, year, ratio);
         } else if (ratioSelection.equals("5")) {
-            fifthChoiceSelected(company, year, ratio);
+            investmentRatiosSelected(company, year, ratio);
         } else if (ratioSelection.equals("6")) {
             sixChoiceSelected();
         }
@@ -144,7 +144,7 @@ public class Application {
     }
 
 
-    private static void firstChoiceSelected(Company company, String year, Ratio ratio) {
+    private static void liquidityRatiosSelected(Company company, String year, Ratio ratio) {
 
         System.out.println("*C)Current Ratio");
         System.out.println(" ----------------");
@@ -154,33 +154,23 @@ public class Application {
         String choice = scanner.nextLine();
         if (choice.equalsIgnoreCase("C")) {
             ratio = new Current();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase("Q")) {
 
             ratio = new Quick();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
 
         } else {
             checkInput();
 
-            firstChoiceSelected(company, year, ratio);
+            liquidityRatiosSelected(company, year, ratio);
         }
 
-
-        procceedStep(company, year, ratio);
-
+        proceedChoice(ratio, year, company);
 
     }
 
 
-    private static void secondChoiceSelected(Company company, String year, Ratio ratio) {
+    private static void profitabilityRatiosSelected(Company company, String year, Ratio ratio) {
 
         System.out.println("*ROA)Return on Assets");
         System.out.println(" --------------------");
@@ -193,47 +183,35 @@ public class Application {
 
 
         if (choice.equalsIgnoreCase("ROA")) {
+
             ratio = new ReturnOnAssets();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
 
         } else if (choice.equalsIgnoreCase("ROE")) {
 
             ratio = new ReturnOnEquity();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
 
         } else if (choice.equalsIgnoreCase("ROCE")) {
 
             ratio = new ReturnOnCapitalEmployed();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
         } else if (choice.equalsIgnoreCase("NET")) {
 
             ratio = new NetProfitMargin();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
 
         } else {
             checkInput();
-            secondChoiceSelected(company, year, ratio);
+            profitabilityRatiosSelected(company, year, ratio);
         }
 
-
-        procceedStep(company, year, ratio);
+        proceedChoice(ratio, year, company);
 
 
     }
 
-    private static void thirdChoiceSelected(Company company, String year, Ratio ratio) {
+
+    private static void activityRatiosSelected(Company company, String year, Ratio ratio) {
 
         System.out.println("*I)Inventory TurnOver");
         System.out.println(" ----------------");
@@ -243,29 +221,23 @@ public class Application {
         if (choice.equalsIgnoreCase("I")) {
 
             ratio = new InventoryTurnOver();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
 
         } else if (choice.equalsIgnoreCase("A")) {
             ratio = new AssetTurnOver();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
         } else {
             checkInput();
-            thirdChoiceSelected(company, year, ratio);
+            activityRatiosSelected(company, year, ratio);
         }
 
-        procceedStep(company, year, ratio);
+        proceedChoice(ratio, year, company);
 
 
     }
 
 
-    private static void fourthChoiceSelected(Company company, String year, Ratio ratio) {
+    private static void debtRatiosSelected(Company company, String year, Ratio ratio) {
 
         System.out.println("*D)Debt Ratio");
         System.out.println("*D/E)Debt to Equity");
@@ -274,36 +246,27 @@ public class Application {
 
         if (choice.equalsIgnoreCase("D")) {
             ratio = new Debt();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
 
         } else if (choice.equalsIgnoreCase("D/E")) {
             ratio = new DetbtToEquity();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
 
         } else if (choice.equalsIgnoreCase(("I"))) {
 
             ratio = new InterestCoverage();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
 
         } else {
             checkInput();
-            fourthChoiceSelected(company, year, ratio);
+            debtRatiosSelected(company, year, ratio);
         }
-        procceedStep(company, year, ratio);
+        proceedChoice(ratio, year, company);
 
 
     }
 
-    private static void fifthChoiceSelected(Company company, String year, Ratio ratio) {
+    private static void investmentRatiosSelected(Company company, String year, Ratio ratio) {
         System.out.println("*P/E)Price To Earnings");
         System.out.println("*P/B)Price to Book Value");
         System.out.println("*P/S) Price to Sales");
@@ -311,45 +274,49 @@ public class Application {
 
         if (choice.equalsIgnoreCase("P/E")) {
             ratio = new PriceToEarnings();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
 
         } else if (choice.equalsIgnoreCase("P/B")) {
 
             ratio = new PriceToBookValue();
-            ratio.setYear(year);
-            ratio.printInfo();
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
+
 
         } else if (choice.equalsIgnoreCase("P/S")) {
 
 
             ratio = new PriceToSales();
-            ratio.setYear(year);
 
-            ratio.printInfo();
-
-            ratio.calcInputs(scanner);
-            company.addRatio(ratio);
 
         } else {
             checkInput();
-            fifthChoiceSelected(company, year, ratio);
+            investmentRatiosSelected(company, year, ratio);
         }
 
 
-        procceedStep(company, year, ratio);
+        proceedChoice(ratio, year, company);
     }
 
 
-    private static void procceedStep(Company company, String year, Ratio ratio) {
+    private static void proceedChoice(Ratio ratio, String year, Company company) {
+
+        ratio.setYear(year);
+
+        ratio.printInfo();
+
+        ratio.calcInputs(scanner);
+
+        company.addRatio(ratio);
+
+        decisionStep(company, year, ratio);
+
+    }
+
+
+    private static void decisionStep(Company company, String year, Ratio ratio) {
 
         scanner.nextLine();
 
-        System.out.println("How do you want to Procceed?");
+        System.out.println("How do you want to Proceed?");
         System.out.println("-----------------------------------------------------");
         System.out.println("*continue)Do you want to continue with " + company.getName() + " in " + year);
         System.out.println("*another)Do you want to continue with " + company.getName() + " in another year?");
@@ -376,7 +343,7 @@ public class Application {
             newRatio.calcInputs(scanner);
             newCompany.addRatio(newRatio);
 
-            procceedStep(newCompany, year, newRatio);
+            decisionStep(newCompany, year, newRatio);
 
 
         } else if (dec.equalsIgnoreCase("compare year")) {
@@ -386,7 +353,7 @@ public class Application {
             newRatio.setYear(newYear);
             newRatio.calcInputs(scanner);
             newCompany.addRatio(newRatio);
-            procceedStep(newCompany, newYear, newRatio);
+            decisionStep(newCompany, newYear, newRatio);
 
         } else if (dec.equalsIgnoreCase("continue")) {
 
@@ -439,7 +406,7 @@ public class Application {
     }
 
 
-    public static void endingMessage() {
+    private static void endingMessage() {
 
         System.out.println("How do you want to continue? (*)Indicates the Symbol");
         System.out.println("*c)Make more Calculations");
@@ -460,17 +427,17 @@ public class Application {
     }
 
 
-    public static void sixChoiceSelected() {
+    private static void sixChoiceSelected() {
         scanner.close();
     }
 
 
-    public static void checkInput() {
+    private static void checkInput() {
         System.err.println("Wrong input choice. Enter the right one please. (*) Indicates the symbol you should insert");
 
     }
 
-    public static HashMap<String, StatsNode> calcAverage(List<Company> companies) {
+    private static HashMap<String, StatsNode> calcAverage(List<Company> companies) {
 
         RatioStatistics stats = new RatioStatistics();
 
@@ -488,9 +455,9 @@ public class Application {
     }
 
 
-    static List<Company> companyList = new ArrayList<>();
+    private static List<Company> companyList = new ArrayList<>();
 
-    static List<String> numOfYears = new ArrayList<>();
-    static Scanner scanner = new Scanner(System.in);
+    private static List<String> numOfYears = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
 
 }
