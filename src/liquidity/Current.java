@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Current extends Ratio {
 
-
+    @Override
     public double calcInputs(Scanner scanner) {
 
 

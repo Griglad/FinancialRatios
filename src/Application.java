@@ -12,6 +12,7 @@ import debt.InterestCoverage;
 import investment.PriceToBookValue;
 import investment.PriceToEarnings;
 import investment.PriceToSales;
+import liquidity.Cash;
 import liquidity.Current;
 import liquidity.Quick;
 import ratio.Ratio;
@@ -149,7 +150,8 @@ public class Application {
         System.out.println("*C)Current Ratio");
         System.out.println(" ----------------");
         System.out.println("*Q)Quick Ratio");
-
+        System.out.println(" ----------------");
+        System.out.println("*CA)Cash Ratio");
 
         String choice = scanner.nextLine();
         if (choice.equalsIgnoreCase("C")) {
@@ -159,6 +161,9 @@ public class Application {
 
             ratio = new Quick();
 
+
+        } else if (choice.equalsIgnoreCase("CA")) {
+            ratio = new Cash();
         } else {
             checkInput();
 
