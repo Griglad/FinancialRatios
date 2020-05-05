@@ -5,7 +5,6 @@ import Profitability.ReturnOnEquity;
 import activity.InventoryTurnOver;
 import activity.AssetTurnOver;
 import company.Company;
-import comparator.CompanyComparator;
 import debt.Debt;
 import debt.DetbtToEquity;
 import debt.InterestCoverage;
@@ -372,7 +371,7 @@ public class Application {
 
         } else if (dec.equalsIgnoreCase("results")) {
 
-            Collections.sort(companyList, Collections.reverseOrder(new CompanyComparator()));
+            Collections.sort(companyList, Collections.reverseOrder((company1,company2)->(Double.compare(company1.getRatioByResult(), company2.getRatioByResult()))));
 
 
             System.out.println("      Year of Calculations: " + numOfYears);
@@ -380,17 +379,11 @@ public class Application {
             if (companyList.size() > 1) {
 
                 HashMap<String, StatsNode> result = calcAverage(companyList);
-                for (HashMap.Entry<String, StatsNode> entry : result.entrySet()) {
-                    String key = entry.getKey();
-                    StatsNode value = entry.getValue();
-
-                    if (value.percent) {
-                        System.out.println("  Average " + key + ": " + Math.round(value.getAverage()) + "%");
 
 
-                    } else {
-                        System.out.printf("  Average " + key + " Ratio is %.2f\n", value.getAverage());
-                    }
+                    result.entrySet().stream().filter(e -> e.getValue().percent).forEach(e -> System.out.println("Average" + e.getKey() + ": " + Math.round(e.getValue().getAverage()) + "%"));
+                    result.entrySet().stream().filter(e -> !e.getValue().percent).forEach(e -> System.out.printf("Average " + e.getKey() + " Ratio is %.2f\n", e.getValue().getAverage()));
+
 
 
                 }
@@ -398,17 +391,12 @@ public class Application {
 
             }
 
-            for (Company c : companyList) {
-
-                c.printInfo();
-
-
-            }
+        companyList.forEach(e -> e.printInfo());
             endingMessage();
         }
 
 
-    }
+
 
 
     private static void endingMessage() {
